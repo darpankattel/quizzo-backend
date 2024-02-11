@@ -36,6 +36,20 @@ class ProfileSerializer(serializers.ModelSerializer):
         }
 
 
+class ProfileWriteSerializer(serializers.ModelSerializer):
+    """
+    Serializer for the user profile object
+    """
+
+    class Meta:
+        model = Profile
+        fields = ['user', 'image', 'interested_in']
+        extra_kwargs = {
+            'interested_in': {'required': False},
+            'image': {'required': False}
+        }
+
+
 class UserAllSerializer(serializers.ModelSerializer):
     """
     Serializer for the user profile object
