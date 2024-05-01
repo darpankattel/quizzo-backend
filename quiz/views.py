@@ -50,7 +50,7 @@ class QuizAnswerView(APIView):
         if Quiz.objects.filter(id=quiz_id).exists():
             quiz = Quiz.objects.get(id=quiz_id)
             answer = request.GET.get('answer')
-            answer = convert_null_to_none(answer)
+            answer,  = convert_null_to_none(answer)
             is_correct = False
             if answer:
                 if quiz.correct_index == int(answer):
